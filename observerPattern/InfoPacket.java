@@ -1,9 +1,11 @@
 package observerPattern;
 
+import java.util.Observable;
+
 /**
  * Created by qngapparat on 18.06.17.
  */
-public class InfoPacket {
+public class InfoPacket extends Observable{
 
     private int p1Wins;
     private int p2Wins;
@@ -16,18 +18,22 @@ public class InfoPacket {
 
     public void addToP1Wins(int wins){
         this.p1Wins += wins;
+        setChanged();
     }
 
     public void addToP2Wins(int wins){
         this.p2Wins += wins;
+        setChanged();
     }
 
     public void addToRoundsPlayed(int roundsPlayed){
         this.roundsPlayed += roundsPlayed;
+        setChanged();
     }
 
     public void addToDraws(int draws){
         this.draws += draws;
+        setChanged();
     }
 
 
@@ -47,4 +53,6 @@ public class InfoPacket {
     public int getDraws(){
         return this.draws;
     }
+
+
 }

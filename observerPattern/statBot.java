@@ -1,15 +1,23 @@
 package observerPattern;
+import javax.sound.midi.MidiDevice;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Observable;
 
 /**
  * Created by qngapparat on 18.06.17.
  */
-public class Observer {
+public class statBot implements Observer{
 
-    public Observer(){
+    public statBot(){
 
     }
 
-    public void update(InfoPacket packet){
+
+
+    public void update(Observable o, Object arg) {
+
+        InfoPacket packet = (InfoPacket) o;
         System.out.println("***** statBot *****");
         System.out.println("Rounds played: " + packet.getRoundsPlayed());
         System.out.println("player 1 wins: " + packet.getp1Wins());

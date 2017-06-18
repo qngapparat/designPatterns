@@ -56,10 +56,10 @@ public class Game {
 	
 	public void run() {
 	    //create a new info packet
-		InfoPacket observerNotification = new InfoPacket();
+		InfoPacket metaData = new InfoPacket();
         //create observer list and add one observer
-        List<Observer> observers = new ArrayList<>();
-        observers.add(new Observer());
+        statBot observer = new statBot();
+        metaData.addObserver(observer);
 
 		while(!isGameFinished()){
 			Option o1 = p1.getChoice();
@@ -67,23 +67,21 @@ public class Game {
 			System.out.println(o1.name() + " vs. " + o2.name());
 			if (o1.beats(o2)){
 				p1.addWin();
-				observerNotification.addToP1Wins(1);
+				metaData.addToP1Wins(1);
 				System.out.println("Player 1 wins round!");
 			} else if (o2.beats(o1)){
 				p2.addWin();
-				observerNotification.addToP2Wins(1);
+				metaData.addToP2Wins(1);
 				System.out.println("Player 2 wins round!");
 			} else {
 				System.out.println("Draw!");
-				observerNotification.addToDraws(1);
+				metaData.addToDraws(1);
 			}
 			System.out.println("-----");
-			observerNotification.addToRoundsPlayed(1);
+			metaData.addToRoundsPlayed(1);
 
-            //push infopacket to observers in List<Observers>:
-            for(Observer observer: observers){
-                observer.update(observerNotification);
-            }
+            //trigger the Obse2rver update
+            metaData.notifyObservers();
 		}
 	}
 	
