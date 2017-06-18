@@ -2,7 +2,7 @@
 Practising the use of the Abstract Factory, Composite and Observer design patterns in Java.
 
 #### TODO
-+ rework
++ rework the composite pattern to more closely resemble a general approach
 
 
 ### Abstract factory design pattern
